@@ -4,19 +4,12 @@ Artifactory Clean Docker Repos User Plugin
 This plugin is used to clean Docker repositories based on configured cleanup
 policies.
 
-Configuration
--------------
+Parameters
+----------
 
-The `cleanDockerImages.properties` file has the following field:
+- `repos`: A list of repositories to clean. This parameter is required.
+- `dryRun`: If this parameter is passed, artifacts will not actually be deleted. Default *false*.
 
-- `dockerRepos`: A list of Docker repositories to clean. If a repo is not in
-  this list, it will not be cleaned.
-
-For example:
-
-``` json
-dockerRepos: ["example-docker-local", "example-docker-local-2"]
-```
 
 Usage
 -----
@@ -44,11 +37,11 @@ plugin in order to decide on the cleanup policy for the image.
 Cleanup can be triggered via a REST endpoint. For example:
 
 ``` shell
-curl -XPOST -uadmin:password http://localhost:8081/artifactory/api/plugins/execute/cleanDockerImages
+curl -XPOST -uadmin:password http://localhost:8081/artifactory/api/plugins/execute/cleanDockerRepos?params=repos=example-repo-local
 ```
 
 A dry run can also be triggered:
 
 ``` shell
-curl -XPOST -uadmin:password "http://localhost:8081/artifactory/api/plugins/execute/cleanDockerImages?params=dryRun=true"
+curl -XPOST -uadmin:password "http://localhost:8081/artifactory/api/plugins/execute/cleanDockerImages?params=dryRun=true;repos=example-repo-local"
 ```
