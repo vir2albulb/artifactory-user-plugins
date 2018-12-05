@@ -43,5 +43,5 @@ curl -XPOST -uadmin:password http://localhost:8081/artifactory/api/plugins/execu
 A dry run can also be triggered:
 
 ``` shell
-curl -XPOST -uadmin:password "http://localhost:8081/artifactory/api/plugins/execute/cleanDockerImages?params=dryRun=true;repos=example-repo-local"
+curl -XPOST -uadmin:password "http://localhost:8081/artifactory/api/plugins/execute/cleanDockerRepos?params=dryRun=true;repos=example-repo-local"
 ```
